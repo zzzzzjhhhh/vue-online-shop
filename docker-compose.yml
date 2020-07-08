@@ -4,11 +4,14 @@ services:
   db:
     image: mongo
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: secret
   api:
-    build: server
+    image: registry-intl.cn-hangzhou.aliyuncs.com/vue-online-shop-zzj/api
     restart: always
   nginx:
-    build: client
+    image: registry-intl.cn-hangzhou.aliyuncs.com/vue-online-shop-zzj/nginx
     restart: always
     ports:
       - 8080:80
